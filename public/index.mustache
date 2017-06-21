@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./main.css" rel="stylesheet">
+    </head>
+    <body>
+        <form action="/" method="POST">
+            <div class="search">
+                <input type="text" name="task" placeholder="add a todo...">
+                <input type="submit" value="Add todo">
+            </div>
+            {{#todos}}
+                {{^complete}}
+                    <div class="in_process">
+                    <a value="Mark Complete" onclick="update({{todo.task}});">
+                    {{task}}
+                    </div>
+                {{/complete}}
+                {{#complete}}
+                    <div class="done">
+                    {{task}}
+                    </div>
+                {{/complete}}
+            {{/todos}}
+        </form>
+    <script src="./app.js"></script>
+    </body>
+</html>
