@@ -18,7 +18,6 @@ app.get("/", function (req, res) {
 });
 
 app.post("/", function (req, res) {
-  console.log(req.body);
   if (req.body.task){
     var newObj = { "task":req.body.task, "complete": false}
     todos.push(newObj);
