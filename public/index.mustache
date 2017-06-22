@@ -7,10 +7,11 @@
         <link href="./main.css" rel="stylesheet">
     </head>
     <body>
+        <div class="todo_list">
         <form action="/" method="POST">
             <div class="search">
-                <input type="text" name="task" placeholder="add a todo...">
-                <input type="submit" value="Add todo">
+                <input type="text" name="task" class="search_bar" placeholder="add a todo...">
+                <input type="submit" id="submit" value="Add todo">
             </div>
         </form>
             {{#todos}}
@@ -18,16 +19,20 @@
                     <div class="in_process">
                     <form action="/" method="POST">
                         <input type="hidden" value="{{task}}" name="mark">
-                        <input type="submit" value="Mark Complete" name="submit">
-                        {{task}}
+                        <input type="submit" class="complete_submit" value="Mark Complete" name="submit">
+                        <span>{{task}}</span>
                     </form>
                     </div>
                 {{/complete}}
+            {{/todos}}
+                <h3>Completed tasks</h3>
+            {{#todos}}
                 {{#complete}}
                     <div class="done">
-                    {{task}}
+                    <p><del>{{task}}</del></p>
                     </div>
                 {{/complete}}
             {{/todos}}
+        </div>
     </body>
 </html>
