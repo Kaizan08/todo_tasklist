@@ -13,13 +13,23 @@ app.use(express.static('./public'));
 var todos = [{"task":"Do dishes", "complete":false},{"task":"Mow lawn", "complete":false},{"task":"Wash Car", "complete":true}];
 
 app.get("/", function (req, res) {
-  console.log(todos.sort(compare));
+  todos.sort(compare);
   res.render('index', { todos: todos });
 });
 
 app.post("/", function (req, res) {
-  var newObj = { "task":req.body.task, "complete": false}
-  todos.push(newObj);
+  console.log(req.body);
+  if (req.body.task){
+    var newObj = { "task":req.body.task, "complete": false}
+    todos.push(newObj);
+  } else {
+    var obj = req.body.mark;
+    for (var i=0; i< todos.length; i++){
+      if (todos[i].task == obj){
+        todos[i].complete = true;
+      }
+    }
+  }
   res.redirect('/');
 });
 

@@ -12,11 +12,15 @@
                 <input type="text" name="task" placeholder="add a todo...">
                 <input type="submit" value="Add todo">
             </div>
+        </form>
             {{#todos}}
                 {{^complete}}
                     <div class="in_process">
-                    <a value="Mark Complete" onclick="update({{todo.task}});">
-                    {{task}}
+                    <form action="/" method="POST">
+                        <input type="hidden" value="{{task}}" name="mark">
+                        <input type="submit" value="Mark Complete" name="submit">
+                        {{task}}
+                    </form>
                     </div>
                 {{/complete}}
                 {{#complete}}
@@ -25,7 +29,5 @@
                     </div>
                 {{/complete}}
             {{/todos}}
-        </form>
-    <script src="./app.js"></script>
     </body>
 </html>
