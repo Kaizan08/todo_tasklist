@@ -25,11 +25,15 @@
                     </div>
                 {{/complete}}
             {{/todos}}
-                <h3>Completed tasks</h3>
             {{#todos}}
                 {{#complete}}
+                    <h3>Completed tasks</h3>
                     <div class="done">
-                    <p><del>{{task}}</del></p>
+                    <form action="/" method="POST">
+                        <input type="hidden" value="{{task}}" name="del">
+                        <input type="submit" class="complete_submit" value="Delete Task" name="delete">
+                        <span><del>{{task}}</del></span>
+                    </form>
                     </div>
                 {{/complete}}
             {{/todos}}
